@@ -1,7 +1,7 @@
 
 # Show Buzzer System 🚀
 
-Willkommen beim **Show Buzzer System**! Diese Anwendung bietet eine interaktive Komplettlösung für Live-Quiz-Shows und Gewinnspiele. Mit Echtzeit-Buzzern, einer zentralen Admin-Steuerung, flexiblen Spieloptionen, Leaderboards, OBS-Integration sowie erweiterten Stable- und Beta-Funktionen behältst du jederzeit den Überblick.
+Willkommen beim **Show Buzzer System**! Diese Anwendung bietet eine interaktive Komplettlösung für Live-Quiz-Shows und Gewinnspiele. Mit Echtzeit-Buzzern, einer zentralen Admin-Steuerung, flexiblen Spieloptionen, Leaderboards, individuellen Top-Listen, OBS-Integration sowie erweiterten Stable- und Beta-Funktionen behältst du jederzeit den Überblick.
 
 ## 🧭 Schnellnavigation
 
@@ -9,6 +9,7 @@ Willkommen beim **Show Buzzer System**! Diese Anwendung bietet eine interaktive 
 - [Spieler-Panel](#spieler-panel)
 - [Admin-Panel](#admin-panel)
 - [Leaderboard](#leaderboard)
+- [Top-Listen-Modus](#top-listen-modus)
 - [OBS-Integration](#obs-integration)
 - [Stable- & Beta-System](#stable--beta-system)
 - [Inhaber-Bereich](#inhaber-bereich)
@@ -25,14 +26,15 @@ Willkommen beim **Show Buzzer System**! Diese Anwendung bietet eine interaktive 
 2. [Spieler-Panel](#spieler-panel)
 3. [Admin-Panel](#admin-panel)
 4. [Leaderboard](#leaderboard)
-5. [OBS-Integration](#obs-integration)
-6. [Stable- & Beta-System](#stable--beta-system)
+5. [Top-Listen-Modus](#top-listen-modus)
+6. [OBS-Integration](#obs-integration)
+7. [Stable- & Beta-System](#stable--beta-system)
    - [Stable](#stable)
    - [Beta](#beta)
    - [Beta-Zugriff anfragen](#beta-zugriff-anfragen)
    - [Eigener Raum-Code](#eigener-raum-code)
-7. [Inhaber-Bereich](#inhaber-bereich)
-8. [Roadmap & Features](#roadmap--features)
+8. [Inhaber-Bereich](#inhaber-bereich)
+9. [Roadmap & Features](#roadmap--features)
 
 [Zurück nach oben ↑](#-schnellnavigation)
 
@@ -52,6 +54,8 @@ Das Show Buzzer System nutzt eine leistungsfähige **Neon PostgreSQL-Datenbank**
 * **Backup & Wiederherstellung:** Spiel- und Konfigurationsdaten können gesichert und bei Bedarf wiederhergestellt werden.
 * **Aktivitätsüberwachung:** Relevante Spieleraktivitäten können für Moderation und Fairplay erfasst werden.
 * **Fairplay-Funktionen:** Zusätzliche Schutz- und Überwachungsfunktionen unterstützen eine faire Durchführung von Spielshows.
+* **Öffentliche Ranglisten:** Separate Leaderboards zeigen aktuelle Spieler- oder Team-Punktestände.
+* **Top-Listen-Modus:** Individuelle Ranglisten mit eigenen Einträgen, Bewertungsmodi und Punktevergaben können erstellt und verwaltet werden.
 
 ---
 
@@ -72,6 +76,8 @@ Das Spielfeld für die Teilnehmer.
    * **Team-Anzeige:** Bei aktiviertem Team-Modus werden die eigene Gruppe und relevante Teammitglieder übersichtlich dargestellt.
    * **Runden-Timer:** Bei zeitgesteuerten Runden wird die verbleibende Zeit direkt im Spieler-Panel angezeigt.
    * **Sitzungswiederherstellung:** Eine bestehende Spielersitzung kann nach einer Unterbrechung wiederhergestellt werden.
+   * **Top-Listen-Anzeige:** Eine aktive Top-Liste kann optional direkt im Spieler-Panel angezeigt werden.
+   * **Einstellbare Sichtbarkeit:** Der Moderator kann festlegen, ob aufgedeckte, verdeckte oder beide Arten von Einträgen angezeigt werden.
 
 ---
 
@@ -100,6 +106,12 @@ Das Kontrollzentrum für den Moderator.
    * **Spieler-Sichtbarkeit:** Spielernamen können für die Teilnehmeransicht ein- oder ausgeblendet werden.
    * **Neue Runde:** Startet eine neue Runde und setzt Buzzer sowie Antworten zurück, während Spieler, Teams und Punkte erhalten bleiben.
    * **Leaderboard-Konfiguration:** Aktivierung und Konfiguration einer öffentlichen Rangliste direkt über das Admin-Panel.
+   * **Top-Listen-Verwaltung:** Eigene Top-Listen mit Titel, Beschreibung und individuellen Ranglisten-Einträgen erstellen und bearbeiten.
+   * **Bewertungsmodi:** Aufsteigende, absteigende oder individuell festgelegte Punktevergabe für die Einträge.
+   * **Spieler- und Team-Zuweisung:** Einträge können einzelnen Spielern oder Teams zugewiesen werden.
+   * **Punktevergabe:** Punkte können gezielt für einzelne Zuweisungen vergeben werden.
+   * **Zuweisungen bearbeiten:** Bestehende Zuweisungen können geändert oder zurückgenommen werden.
+   * **Top-Listen-Sichtbarkeit:** Konfiguration, ob die aktive Top-Liste im Spieler-Panel angezeigt wird und welche Einträge sichtbar sind.
    * **Zugriffsschutz:** Leaderboards können über den Raum-Code, einen separaten Zugriffscode oder beide Varianten erreichbar gemacht werden.
    * **Freigabe-Link:** Für das Leaderboard kann direkt ein teilbarer Link generiert werden.
    * **Aktivitätsüberwachung:** Relevante Aktivitäten während einer laufenden Show können überwacht werden.
@@ -126,6 +138,50 @@ Die öffentliche Rangliste für Zuschauer und Teilnehmer.
 
 ---
 
+## 🏅 Top-Listen-Modus
+<a id="top-listen-modus"></a>
+
+Mit dem Top-Listen-Modus können Moderatoren eigene Ranglisten für ihre Quiz-Shows und Events erstellen. Die Listen können unabhängig vom normalen Punktesystem verwaltet und mit Spielern oder Teams verknüpft werden.
+
+### Top-Listen erstellen und verwalten
+
+* **Individuelle Listen:** Eigene Top-Listen mit einem Titel und einer Beschreibung erstellen.
+* **Ranglisten-Einträge:** Die einzelnen Einträge einer Liste können individuell verwaltet werden.
+* **Bewertungsmodi:** Es stehen unterschiedliche Möglichkeiten zur Punktevergabe zur Verfügung:
+   * Aufsteigende Punktevergabe
+   * Absteigende Punktevergabe
+   * Individuell festgelegte Punkte
+* **Aktive Liste:** Die gewünschte Top-Liste kann für die aktuelle Show aktiviert und verwaltet werden.
+
+### Spieler- und Team-Zuweisungen
+
+* **Zuweisung:** Ranglisten-Einträge können einzelnen Spielern oder Teams zugewiesen werden.
+* **Punkte:** Für Zuweisungen können Punkte vergeben werden.
+* **Namen und Punkte:** Die Anzeige enthält neben den Punkten auch den zugewiesenen Spieler- oder Teamnamen.
+* **Änderungen:** Zuweisungen können bearbeitet oder wieder zurückgenommen werden.
+
+### Anzeige im Spieler-Panel
+
+Die Anzeige der aktiven Top-Liste im Spieler-Panel kann unabhängig von der OBS-Ausgabe aktiviert oder deaktiviert werden.
+
+Für die Sichtbarkeit stehen drei Möglichkeiten zur Verfügung:
+
+* **Aufgedeckte Einträge:** Nur bereits aufgedeckte Einträge werden angezeigt.
+* **Verdeckte Einträge:** Nur noch nicht aufgedeckte Einträge werden angezeigt.
+* **Alle Einträge:** Sowohl aufgedeckte als auch verdeckte Einträge werden angezeigt.
+
+Die Anzeige im Spieler-Panel ist standardmäßig deaktiviert und muss bei Bedarf in den Einstellungen aktiviert werden.
+
+### OBS-Overlay
+
+Für den Top-Listen-Modus steht ein eigenes OBS-Overlay zur Verfügung.
+
+Damit kann die aktive Top-Liste separat in OBS Studio eingebunden und während einer Show dargestellt werden.
+
+Die OBS-Ausgabe ist unabhängig von den Sichtbarkeitseinstellungen des Spieler-Panels.
+
+---
+
 ## 📺 OBS-Integration
 <a id="obs-integration"></a>
 
@@ -135,6 +191,7 @@ Bringe deine Quiz-Show direkt in deinen Stream.
 * **Dynamische Darstellung:** Das System kann Informationen aus dem aktuellen Spielraum für Overlays bereitstellen.
 * **Transparente Darstellung:** Unterstützt eine für Stream-Overlays geeignete Darstellung ohne störende Seitenelemente.
 * **Overlay-Funktionen:** Informationen wie Spieler, Teams, Punktestände, Buzzer-Status und weitere Spieldaten können für die Darstellung genutzt werden.
+* **Top-Listen-Overlay:** Ein eigenes Overlay stellt die aktive Top-Liste für die Verwendung in OBS bereit.
 * **Konfiguration:** OBS-Darstellungen können abhängig von den verfügbaren Einstellungen individuell angepasst werden.
 
 ---
