@@ -1,4 +1,3 @@
-
 # Show Buzzer System 🚀
 
 Willkommen beim **Show Buzzer System**! Diese Anwendung bietet eine interaktive Komplettlösung für Live-Quiz-Shows und Gewinnspiele. Mit Echtzeit-Buzzern, einer zentralen Admin-Steuerung, flexiblen Spieloptionen, Leaderboards, individuellen Top-Listen, OBS-Integration sowie erweiterten Stable- und Beta-Funktionen behältst du jederzeit den Überblick.
@@ -55,7 +54,7 @@ Das Show Buzzer System nutzt eine leistungsfähige **Neon PostgreSQL-Datenbank**
 * **Aktivitätsüberwachung:** Relevante Spieleraktivitäten können für Moderation und Fairplay erfasst werden.
 * **Fairplay-Funktionen:** Zusätzliche Schutz- und Überwachungsfunktionen unterstützen eine faire Durchführung von Spielshows.
 * **Öffentliche Ranglisten:** Separate Leaderboards zeigen aktuelle Spieler- oder Team-Punktestände.
-* **Top-Listen-Modus:** Individuelle Ranglisten mit eigenen Einträgen, Bewertungsmodi und Punktevergaben können erstellt und verwaltet werden.
+* **Top-Listen-Modus:** Individuelle Ranglisten mit eigenen Einträgen, Bewertungsmodi und Punktevergaben können erstellt, verwaltet und während einer Show Spielern oder Teams zugewiesen werden.
 
 ---
 
@@ -78,6 +77,7 @@ Das Spielfeld für die Teilnehmer.
    * **Sitzungswiederherstellung:** Eine bestehende Spielersitzung kann nach einer Unterbrechung wiederhergestellt werden.
    * **Top-Listen-Anzeige:** Eine aktive Top-Liste kann optional direkt im Spieler-Panel angezeigt werden.
    * **Einstellbare Sichtbarkeit:** Der Moderator kann festlegen, ob aufgedeckte, verdeckte oder beide Arten von Einträgen angezeigt werden.
+   * **Zuweisungsinformationen:** Bei aufgedeckten Einträgen können der zugewiesene Spieler bzw. das Team und die dafür vergebenen Punkte angezeigt werden.
 
 ---
 
@@ -107,11 +107,14 @@ Das Kontrollzentrum für den Moderator.
    * **Neue Runde:** Startet eine neue Runde und setzt Buzzer sowie Antworten zurück, während Spieler, Teams und Punkte erhalten bleiben.
    * **Leaderboard-Konfiguration:** Aktivierung und Konfiguration einer öffentlichen Rangliste direkt über das Admin-Panel.
    * **Top-Listen-Verwaltung:** Eigene Top-Listen mit Titel, Beschreibung und individuellen Ranglisten-Einträgen erstellen und bearbeiten.
+   * **Listenbibliothek:** Gespeicherte Listen erneut auswählen, duplizieren oder löschen.
+   * **JSON-Import und -Export:** Top-Listen als JSON-Datei exportieren und vorhandene JSON-Dateien importieren.
    * **Bewertungsmodi:** Aufsteigende, absteigende oder individuell festgelegte Punktevergabe für die Einträge.
    * **Spieler- und Team-Zuweisung:** Einträge können einzelnen Spielern oder Teams zugewiesen werden.
-   * **Punktevergabe:** Punkte können gezielt für einzelne Zuweisungen vergeben werden.
-   * **Zuweisungen bearbeiten:** Bestehende Zuweisungen können geändert oder zurückgenommen werden.
+   * **Punktevergabe:** Bei einer Zuweisung werden die entsprechenden Punkte direkt dem Spieler- oder Team-Punktestand gutgeschrieben.
+   * **Zuweisungen zurücknehmen:** Zurückgenommene Zuweisungen ziehen die zuvor vergebenen Punkte wieder ab.
    * **Top-Listen-Sichtbarkeit:** Konfiguration, ob die aktive Top-Liste im Spieler-Panel angezeigt wird und welche Einträge sichtbar sind.
+   * **Standardfunktionen deaktivieren:** Buzzer und Textantworten können während des Top-Listen-Modus optional deaktiviert werden. Die Top-Liste kann dadurch als alleiniger Spielmodus verwendet werden.
    * **Zugriffsschutz:** Leaderboards können über den Raum-Code, einen separaten Zugriffscode oder beide Varianten erreichbar gemacht werden.
    * **Freigabe-Link:** Für das Leaderboard kann direkt ein teilbarer Link generiert werden.
    * **Aktivitätsüberwachung:** Relevante Aktivitäten während einer laufenden Show können überwacht werden.
@@ -145,22 +148,34 @@ Mit dem Top-Listen-Modus können Moderatoren eigene Ranglisten für ihre Quiz-Sh
 
 ### Top-Listen erstellen und verwalten
 
-* **Individuelle Listen:** Eigene Top-Listen mit einem Titel und einer Beschreibung erstellen.
-* **Ranglisten-Einträge:** Die einzelnen Einträge einer Liste können individuell verwaltet werden.
+* **Individuelle Listen:** Eigene Top-Listen mit einem Titel und einer optionalen Beschreibung erstellen.
+* **Ranglisten-Einträge:** Die einzelnen Einträge einer Liste können individuell angelegt und bearbeitet werden.
+* **Listenbibliothek:** Erstellte Listen können gespeichert, erneut ausgewählt, dupliziert und gelöscht werden.
+* **JSON-Export:** Gespeicherte Top-Listen können als JSON-Datei exportiert werden.
+* **JSON-Import:** Vorhandene Top-Listen können über eine JSON-Datei importiert und anschließend geprüft und gespeichert werden.
 * **Bewertungsmodi:** Es stehen unterschiedliche Möglichkeiten zur Punktevergabe zur Verfügung:
-   * Aufsteigende Punktevergabe
-   * Absteigende Punktevergabe
-   * Individuell festgelegte Punkte
-* **Aktive Liste:** Die gewünschte Top-Liste kann für die aktuelle Show aktiviert und verwaltet werden.
+   * **Aufsteigend:** Rang 1 erhält 1 Punkt; nachfolgende Einträge erhalten entsprechend mehr Punkte.
+   * **Absteigend:** Rang 1 erhält die höchste Punktzahl.
+   * **Individuell:** Für jeden Eintrag kann eine eigene Punktzahl festgelegt werden.
+* **Aktive Liste:** Die gewünschte Top-Liste kann für die aktuelle Show gestartet und verwaltet werden.
+* **Listenwechsel:** Eine laufende Liste kann abgeschlossen und die nächste Liste gestartet werden.
 
 ### Spieler- und Team-Zuweisungen
 
 * **Zuweisung:** Ranglisten-Einträge können einzelnen Spielern oder Teams zugewiesen werden.
-* **Punkte:** Für Zuweisungen können Punkte vergeben werden.
-* **Namen und Punkte:** Die Anzeige enthält neben den Punkten auch den zugewiesenen Spieler- oder Teamnamen.
-* **Änderungen:** Zuweisungen können bearbeitet oder wieder zurückgenommen werden.
+* **Punkte:** Bei einer Zuweisung werden die festgelegten Punkte direkt gutgeschrieben.
+* **Punktestand:** Die vergebenen Punkte fließen in die normale Spieler- bzw. Teamwertung ein.
+* **Zuweisungen zurücknehmen:** Eine Zuweisung kann zurückgenommen werden. Die dafür gutgeschriebenen Punkte werden entsprechend wieder abgezogen.
+* **Namen und Punkte:** Bei aufgedeckten Einträgen können der zugewiesene Spieler bzw. das Team sowie die vergebenen Punkte angezeigt werden.
 
-### Anzeige im Spieler-Panel
+### Einstellungen und Spieleranzeige
+
+Der Top-Listen-Modus kann unabhängig von den normalen Spieleinstellungen aktiviert werden.
+
+Zusätzlich kann festgelegt werden, ob die normalen Buzzer- und Textantworten während des Top-Listen-Modus weiterhin verfügbar sein sollen.
+
+* **Standardfunktionen aktiv:** Buzzer und Textantworten können parallel zur Top-Liste verwendet werden.
+* **Standardfunktionen deaktiviert:** Buzzer und Textantworten werden während des Top-Listen-Modus gesperrt. Die Top-Liste kann dadurch als alleiniger Spielmodus verwendet werden.
 
 Die Anzeige der aktiven Top-Liste im Spieler-Panel kann unabhängig von der OBS-Ausgabe aktiviert oder deaktiviert werden.
 
@@ -177,6 +192,13 @@ Die Anzeige im Spieler-Panel ist standardmäßig deaktiviert und muss bei Bedarf
 Für den Top-Listen-Modus steht ein eigenes OBS-Overlay zur Verfügung.
 
 Damit kann die aktive Top-Liste separat in OBS Studio eingebunden und während einer Show dargestellt werden.
+
+Das Overlay kann unter anderem folgende Informationen anzeigen:
+
+* Titel und Ranglisten-Einträge der aktiven Liste.
+* Noch verdeckte Einträge, ohne deren Inhalt vorzeitig offenzulegen.
+* Teilnehmerübersicht mit Spieler- bzw. Teamnamen und Punkteständen.
+* Optionale Statusinformationen zu Buzzer und Textantworten.
 
 Die OBS-Ausgabe ist unabhängig von den Sichtbarkeitseinstellungen des Spieler-Panels.
 
