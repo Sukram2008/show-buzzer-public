@@ -1,16 +1,40 @@
+
 # Show Buzzer System 🚀
 
 Willkommen beim **Show Buzzer System**! Diese Anwendung bietet eine interaktive Komplettlösung für Live-Quiz-Shows und Gewinnspiele. Mit Echtzeit-Buzzern, einer zentralen Admin-Steuerung, flexiblen Spieloptionen, Leaderboards, OBS-Integration sowie erweiterten Stable- und Beta-Funktionen behältst du jederzeit den Überblick.
 
-## 📑 Inhaltsverzeichnis
+## 🧭 Schnellnavigation
+
+- [Allgemeine Übersicht](#allgemeine-übersicht)
+- [Spieler-Panel](#spieler-panel)
+- [Admin-Panel](#admin-panel)
+- [Leaderboard](#leaderboard)
+- [OBS-Integration](#obs-integration)
+- [Stable- & Beta-System](#stable--beta-system)
+- [Inhaber-Bereich](#inhaber-bereich)
+- [Roadmap & Features](#roadmap--features)
+
+[Zum vollständigen Inhaltsverzeichnis ↓](#vollständiges-inhaltsverzeichnis)
+
+---
+
+## 📑 Vollständiges Inhaltsverzeichnis
+<a id="vollständiges-inhaltsverzeichnis"></a>
+
 1. [Allgemeine Übersicht](#allgemeine-übersicht)
 2. [Spieler-Panel](#spieler-panel)
 3. [Admin-Panel](#admin-panel)
 4. [Leaderboard](#leaderboard)
 5. [OBS-Integration](#obs-integration)
 6. [Stable- & Beta-System](#stable--beta-system)
+   - [Stable](#stable)
+   - [Beta](#beta)
+   - [Beta-Zugriff anfragen](#beta-zugriff-anfragen)
+   - [Eigener Raum-Code](#eigener-raum-code)
 7. [Inhaber-Bereich](#inhaber-bereich)
 8. [Roadmap & Features](#roadmap--features)
+
+[Zurück nach oben ↑](#-schnellnavigation)
 
 ---
 
